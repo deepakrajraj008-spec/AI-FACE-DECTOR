@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Face attendance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <h1>Face attendance</h1>
+      <p>Stand in front of the camera to check in.</p>
+    </div>
+    <div class="pills">
+      <span class="pill"><i class="dot ok"></i>Camera live</span>
+      <span class="pill" id="modelPill"><i class="dot"></i>Model not trained</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="stage" aria-label="Live camera">
+      <img src="/video" alt="Live camera feed with face boxes">
+      <span class="corner tl"></span><span class="corner tr"></span>
+      <span class="corner bl"></span><span class="corner br"></span>
+      <div class="scan"></div>
+      <div class="chip" id="chip">
+        <i class="dot" id="chipDot"></i>
+        <strong id="chipName">No face in view</strong>
+        <span id="chipConf"></span>
+      </div>
+    </section>
+
+    <aside>
+      <div class="card">
+        <div class="head">
+          <h2>Checked in</h2>
+          <span class="count" id="count">0</span>
+        </div>
+        <ul id="roster" class="roster"></ul>
+        <button class="ghost" id="clearBtn">Clear list</button>
+      </div>
+
+      <div class="card">
+        <h2>Add a person</h2>
+        <label for="name">Full name</label>
+        <input id="name" autocomplete="off" placeholder="e.g. Aarav Sharma">
+        <div class="bar" id="bar" hidden><span id="barFill"></span></div>
+        <div class="row">
+          <button id="enrollBtn">Start capture</button>
+          <button class="ghost" id="trainBtn">Train model</button>
+        </div>
+        <p id="msg" role="status">Capture 40 photos, then train the model.</p>
+      </div>
+
+      <div class="card">
+        <div class="head">
+          <h2>People</h2>
+          <span class="count" id="peopleCount">0</span>
+        </div>
+        <ul id="people" class="roster"></ul>
+      </div>
+    </aside>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>
